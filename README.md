@@ -8,7 +8,7 @@
 
 Registre is a web application built with Spring Boot for logging completed/uncompleted media. Each medium type has tables for completed and uncompleted media, as well as a section for reviews.
 
-This application supports basic CRUD operations and includes REST APIs for each type of medium. The views were primarily constructed with the use of Bootstrap and Thymeleaf fragments, and Registre unit tests were facilitated by JUnit.
+This application supports basic CRUD operations and includes REST APIs for each type of medium. The views were primarily constructed with the use of Bootstrap and Thymeleaf fragments, and Registre integration tests were facilitated by JUnit.
 
 ## Technology
 * Spring Boot
