@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title>Albums | Registre</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+
+    <section class="pt-5 pl-5">
+        <div class="container-fluid">
+            <div class="row mb-5">
+                <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
+                    <div class="row align-items-center pt-4 pr-5 mt-3">
+                        <div class="col-12">
+
+                            <h3 th:text="${isCompleted ? 'Albums Heard' : 'Albums to Hear'}">Albums</h3>
+                            <hr>
+
+                            <div class="row ml-auto mr-auto">
+
+                                <!-- Entries -->
+                                <div th:replace="fragments :: entries"></div>
+
+                                <span class="mr-auto"></span>
+
+                                <!-- Add button -->
+                                <div th:replace="fragments :: tableBtnAdd(text='Add Album', path='/albums/' + ${isCompleted ? 'completed' : 'uncompleted'} + '/add')"></div>
+                            </div>
+
+                            <!-- Table -->
+                            <table class="table table-bordered table-hover table-responsive-sm">
+                                <thead class="thead-dark">
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Artist</th>
+                                    <th>Category</th>
+                                    <th>Released</th>
+                                    <th th:if="${isCompleted}">Completed</th>
+                                    <th th:if="${isCompleted}">Rating</th>
+                                    <th>Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="album: ${page.content}">
+                                    <td th:text="${album.title}"></td>
+                                    <td th:text="${album.artist}"></td>
+                                    <td th:text="${album.category?.name}"></td>
+                                    <td th:text="${album.dateReleased}"></td>
+                                    <td th:if="${isCompleted}" th:text="${album.dateCompleted}"></td>
+                                    <td th:if="${isCompleted}" th:text="${album.rating}"></td>
+                                    <td>
+                                        <div class="row align-items-center">
+                                            <div th:replace="fragments :: actionEdit(path='/albums/edit?id=' + ${album.id})"></div>
+                                            <div th:if="${isCompleted}">
+                                                <div th:replace="fragments :: actionReview(path='/albums/review?id=' + ${album.id})"></div>
+                                            </div>
+                                            <div th:if="${!isCompleted}">
+                                                <div th:replace="fragments :: actionComplete(path='/albums/uncompleted/mark-completed?id=' + ${album.id})"></div>
+                                            </div>
+                                            <div th:replace="fragments :: actionDelete(path='/albums/delete?id=' + ${album.id})"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                            <!-- Pagination -->
+                            <nav th:replace="fragments :: pagination(page=${page}, path='/albums/' + ${isCompleted ? 'completed' : 'uncompleted'})"></nav>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+</body>
+</html>

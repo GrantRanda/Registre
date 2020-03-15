@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title>Review Game | Registre</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+
+    <section class="pt-5 pl-5">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
+                    <div class="row align-items-center pt-4 pr-5 mt-3">
+                        <div class="col-12">
+
+                            <form action="#" th:action="@{/games/reviews/save(id=${param.id})}" th:object="${review}" method="post">
+                                <h3>Review Game</h3>
+                                <hr>
+                                <h5 th:text="${title}"></h5>
+                                <input type="hidden" th:field="*{id}">
+                                <div class="form-group" style="max-width: 80rem;">
+                                    <label for="inputReview"></label>
+                                    <textarea th:field="*{text}" class="form-control" id="inputReview" rows="20"></textarea>
+                                    <div th:if="${#fields.hasErrors('text')}" class="text-danger pt-1">
+                                        This field is required.
+                                    </div>
+                                </div>
+                                <div class="row ml-auto mb-3">
+                                    <button type="submit" class="btn btn-info mr-3">Save</button>
+                                    <div>
+                                        <a th:href="@{'/games/reviews'}"
+                                           class="btn btn-light">Cancel</a>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+</body>
+</html>
