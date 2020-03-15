@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Registre</title>
+
+    <!-- Bootstrap | Custom CSS | Quicksand Font | Font Awesome -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/57f1984397.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<!-- Sidebar | top navigation -->
+<nav class="navbar navbar-expand-md navbar-light">
+
+    <!-- Sidebar Toggle -->
+    <button class="navbar-toggler bg-light ml-auto mb-2" type="button" data-toggle="collapse" data-target="#navContent">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navigation container -->
+    <div class="collapse navbar-collapse" id="navContent">
+        <div class="container-fluid">
+            <div class="row">
+
+                <!-- Sidebar -->
+                <div class="navContent fixed-top col-xl-2 col-lg-3 col-md-4 ">
+
+                    <!-- Title -->
+                    <a href="#" class="navbar-brand d-block text-center text-white mb-2 mx-auto py-3">Registre</a>
+
+                    <!-- Home link -->
+                    <div class="pb-2">
+                        <a class="nav-link text-white p-2 sidebar-button" th:href="@{/}"
+                           th:classappend="${#httpServletRequest.getRequestURI() == '/' ? 'sidebar-active':''}">
+                            <i class="fas fa-home text-light fa-lg fa-fw mr-3"></i>Home
+                        </a>
+                    </div>
+
+                    <hr> <!-- Divider -->
+
+                    <!-- Dropdown menus -->
+                    <ul class="nav flex-column mt-2">
+
+                        <!-- Books -->
+                        <li class="nav-item">
+                            <a class="nav-link text-white p-2 mb-2 mt-2 sidebar-button sidebar-menu"
+                               href="#submenuOne" data-toggle="collapse" data-target="#submenuOne">
+                                <i class="fas fa-book text-light fa-lg fa-fw mr-3"></i>Books
+                                <span class="dropdown-toggle float-right"></span></a>
+
+                            <div class="collapse" id="submenuOne" aria-expanded="false"
+                                 th:classappend="${(#httpServletRequest.getRequestURI() == '/books/completed')
+                                 || (#httpServletRequest.getRequestURI() == '/books/uncompleted')
+                                 || (#httpServletRequest.getRequestURI() == '/books/reviews') ? 'show':''}">
+                                <ul class="flex-column pl-3 nav">
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white p-2 mb-2 mt-2 sidebar-button sidebar-button-sub"
+                                           th:href="@{/books/completed}"
+                                           th:classappend="${#httpServletRequest.getRequestURI()
+                                           == '/books/completed' ? 'sidebar-active':''}">
+                                        <span class="pl-4 ml-1">Books Read</span></a></li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white p-2 mb-2 mt-2 sidebar-button"
+                                           th:href="@{/books/uncompleted}"
+                                           th:classappend="${#httpServletRequest.getRequestURI()
+                                           == '/books/uncompleted' ? 'sidebar-active':''}">
+                                        <span class="pl-4 ml-1">Books to Read</span></a></li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white p-2 mb-2 mt-2 sidebar-button"
+                                           th:href="@{/books/reviews}"
+                                           th:classappend="${#httpServletRequest.getRequestURI()
+                                           == '/books/reviews' ? 'sidebar-active':''}">
+                                            <span class="pl-4 ml-1">Book Reviews</span></a></li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <!-- Albums -->
+                        <li class="nav-item">
+                            <a class="nav-link text-white p-2 mb-2 mt-2 sidebar-button sidebar-menu"
+                               href="#submenuTwo" data-toggle="collapse" data-target="#submenuTwo">
+                                <i class="fas fa-music text-light fa-lg fa-fw mr-3"></i>Albums
+                                <span class="dropdown-toggle float-right"></span></a>
+
+                            <div class="collapse" id="submenuTwo" aria-expanded="false"
+                                 th:classappend="${(#httpServletRequest.getRequestURI() == '/albums/completed')
+                                 || (#httpServletRequest.getRequestURI() == '/albums/uncompleted')
+                                 || (#httpServletRequest.getRequestURI() == '/albums/reviews') ? 'show':''}">
+                                <ul class="flex-column pl-3 nav">
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white p-2 mb-2 mt-2 sidebar-button sidebar-button-sub"
+                                           th:href="@{/albums/completed}"
+                                           th:classappend="${#httpServletRequest.getRequestURI()
+                                           == '/albums/completed' ? 'sidebar-active':''}">
+                                            <span class="pl-4 ml-1">Albums Heard</span></a></li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white p-2 mb-2 mt-2 sidebar-button"
+                                           th:href="@{/albums/uncompleted}"
+                                           th:classappend="${#httpServletRequest.getRequestURI()
+                                           == '/albums/uncompleted' ? 'sidebar-active':''}">
+                                            <span class="pl-4 ml-1">Albums to Hear</span></a></li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white p-2 mb-2 mt-2 sidebar-button"
+                                           th:href="@{/albums/reviews}"
+                                           th:classappend="${#httpServletRequest.getRequestURI()
+                                           == '/albums/reviews' ? 'sidebar-active':''}">
+                                            <span class="pl-4 ml-1">Album Reviews</span></a></li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <!-- Movies -->
+                        <li class="nav-item">
+                            <a class="nav-link text-white collapsed p-2 mb-2 mt-2 sidebar-button sidebar-menu"
+                               href="#submenuThree" data-toggle="collapse" data-target="#submenuThree">
+                                <i class="fas fa-film text-light fa-lg fa-fw mr-3"></i>Movies
+                                <span class="dropdown-toggle float-right"></span></a>
+
+                            <div class="collapse" id="submenuThree" aria-expanded="false"
+                                 th:classappend="${(#httpServletRequest.getRequestURI() == '/movies/completed')
+                                 || (#httpServletRequest.getRequestURI() == '/movies/uncompleted')
+                                 || (#httpServletRequest.getRequestURI() == '/movies/reviews') ? 'show':''}">
+                                <ul class="flex-column pl-3 nav">
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white p-2 mb-2 mt-2 sidebar-button"
+                                           th:href="@{/movies/completed}"
+                                           th:classappend="${#httpServletRequest.getRequestURI()
+                                           == '/movies/completed' ? 'sidebar-active':''}">
+                                        <span class="pl-4 ml-1">Movies Watched</span></a></li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white p-2 mb-2 mt-2 sidebar-button"
+                                           th:href="@{/movies/uncompleted}"
+                                           th:classappend="${#httpServletRequest.getRequestURI()
+                                           == '/movies/uncompleted' ? 'sidebar-active':''}">
+                                        <span class="pl-4 ml-1">Movies to Watch</span></a></li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white p-2 mb-2 mt-2 sidebar-button"
+                                           th:href="@{/movies/reviews}"
+                                           th:classappend="${#httpServletRequest.getRequestURI()
+                                           == '/movies/reviews' ? 'sidebar-active':''}">
+                                            <span class="pl-4 ml-1">Movie Reviews</span></a></li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <!-- Games -->
+                        <li class="nav-item">
+                            <a class="nav-link text-white collapsed p-2 mb-2 mt-2 sidebar-button sidebar-menu"
+                               href="#submenuFour" data-toggle="collapse" data-target="#submenuFour">
+                                <i class="fas fa-gamepad text-light fa-lg fa-fw mr-3"></i>Games
+                                <span class="dropdown-toggle float-right"></span></a>
+
+                            <div class="collapse" id="submenuFour" aria-expanded="false"
+                                 th:classappend="${(#httpServletRequest.getRequestURI() == '/games/completed')
+                                 || (#httpServletRequest.getRequestURI() == '/games/uncompleted')
+                                 || (#httpServletRequest.getRequestURI() == '/games/reviews') ? 'show':''}">
+                                <ul class="flex-column pl-3 nav">
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white p-2 mb-2 mt-2 sidebar-button"
+                                           th:href="@{/games/completed}"
+                                           th:classappend="${#httpServletRequest.getRequestURI()
+                                           == '/games/completed' ? 'sidebar-active':''}">
+                                        <span class="pl-4 ml-1">Games Played</span></a></li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white p-2 mb-2 mt-2 sidebar-button"
+                                           th:href="@{/games/uncompleted}"
+                                           th:classappend="${#httpServletRequest.getRequestURI()
+                                           == '/games/uncompleted' ? 'sidebar-active':''}">
+                                        <span class="pl-4 ml-1">Games to Play</span></a></li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white p-2 mb-2 mt-2 sidebar-button"
+                                           th:href="@{/games/reviews}"
+                                           th:classappend="${#httpServletRequest.getRequestURI()
+                                           == '/games/reviews' ? 'sidebar-active':''}">
+                                            <span class="pl-4 ml-1">Game Reviews</span></a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <hr> <!-- Divider -->
+                </div>
+
+                <!-- Top nav -->
+                <div class="col-xl-10 col-lg-9 col-md-8 ml-auto fixed-top py-2 top-nav">
+                    <div class="row align-items-center py-3">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Page content -->
+<div layout:fragment="content"></div>
+
+<!-- jQuery | Popper.js | Bootstrap JS | Custom JS -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+<script src="/js/script.js"></script>
+
+</body>
+</html>
