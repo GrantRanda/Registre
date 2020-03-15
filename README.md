@@ -1,5 +1,10 @@
 # Registre
-[![License: GPL v3](https://img.shields.io/badge/Spring%20Boot-2.2.2-brightgreen)](https://github.com/spring-projects/spring-boot)
+[![Spring Boot: 2.2.2](https://img.shields.io/badge/Spring%20Boot-2.2.2-brightgreen)](https://github.com/spring-projects/spring-boot)
+[![Thymeleaf: 3.0](https://img.shields.io/badge/Thymeleaf-3.0-green)](https://www.thymeleaf.org/index.html)
+[![Hibernate: 5.4.9](https://img.shields.io/badge/Hibernate-5.4.9-yellow)](https://hibernate.org/)
+[![Maven: 3.6.2](https://img.shields.io/badge/Maven-3.6.2-orange.svg)](https://maven.apache.org/)
+[![JDK: 1.8](https://img.shields.io/badge/JDK-1.8-red)](https://www.oracle.com/java/technologies/javase-jdk8-downloads.html)
+[![License: GPL v3](https://img.shields.io/badge/license-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 ## Technology
 * Spring Boot
