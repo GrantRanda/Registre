@@ -6,6 +6,10 @@
 [![JDK: 1.8](https://img.shields.io/badge/JDK-1.8-red)](https://www.oracle.com/java/technologies/javase-jdk8-downloads.html)
 [![License: GPL v3](https://img.shields.io/badge/license-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
+Registre is a web application built with Spring Boot for logging completed/uncompleted media. Each medium type has tables for completed and uncompleted media, as well as a section for reviews.
+
+This application supports basic CRUD operations and includes REST APIs for each type of medium. The views were primarily constructed with the use of Bootstrap and Thymeleaf fragments, and Registre unit tests were facilitated by JUnit.
+
 ## Technology
 * Spring Boot
 * Spring Data JPA
