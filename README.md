@@ -20,6 +20,12 @@ This application supports basic CRUD operations and includes REST APIs for each 
 * JUnit
 * Maven
 
+## Images
+![Home](images/home.png)
+![Completed Media Table](images/table-completed.png)
+![Reviews](images/reviews.png)
+![Completed Media Form](images/form-completed.png)
+
 ## Installation
 Create a database in MySQL Workbench named *registre*.
 
@@ -40,12 +46,6 @@ Download/clone the repository, then run the application.
 ```
 mvnw spring-boot:run
 ```
-
-## Images
-![Home](images/home.png)
-![Completed Media Table](images/table-completed.png)
-![Reviews](images/reviews.png)
-![Completed Media Form](images/form-completed.png)
 
 ## License
 [![License: GPL v3](https://img.shields.io/badge/license-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
